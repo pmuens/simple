@@ -1,0 +1,17 @@
+version: '2'
+services:
+  simple-go:
+    image: golang:latest
+    volumes:
+      - .:/go/src/github.com/pmuens/simple
+      - ~/.aws/:/root/.aws
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_PROFILE
+      - AWS_SESSION_TOKEN
+      - AWS_SECURITY_TOKEN
+    working_dir: /go/src/github.com/pmuens/simple
+    command: go get
+
+# https://github.com/blindside-io/example-go-with-compose/blob/master/blog-post.md
